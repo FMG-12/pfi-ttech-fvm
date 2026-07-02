@@ -43,9 +43,4 @@ app.use((req, res) => {
     res.status(404).json({ message: 'Ruta no encontrada' });
 });
 
-// servidor
-const PORT = env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Servidor ejecutando en el puerto ${PORT}`);
-});
+export default app;
