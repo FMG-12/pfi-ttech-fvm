@@ -32,15 +32,11 @@ app.use(bodyParser.json());
 
 
 // rutas
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-
 app.use('/api', authRoutes)
 app.use('/api', authentication, productsRoutes)
 app.use('/api', authentication, userRoutes)
 
-app.use((req, res) => {
-    res.status(404).json({ message: 'Ruta no encontrada' });
-});
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 export default app;
