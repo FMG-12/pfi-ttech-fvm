@@ -13,8 +13,12 @@ import { logger } from './src/middleware/logger.js'
 
 const app = express();
 
+//logs/app.log
 app.use(logger)
 
+/**
+ * CORS
+ */
 app.use(cors({
     origin: env.CORS_ORIGIN,
     credentials: true
@@ -28,10 +32,15 @@ app.use((req, res, next) => {
     next()
 });
 
+/**
+ * Body parser
+ */
 app.use(bodyParser.json());
 
 
-// rutas
+/**
+ * Rutas
+ */
 app.use('/api', authRoutes)
 app.use('/api', authentication, productsRoutes)
 app.use('/api', authentication, userRoutes)
